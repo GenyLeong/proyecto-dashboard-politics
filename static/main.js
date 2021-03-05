@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var instances = M.Datepicker.init(elems);
 
   $.when(
-    $.getJSON("/ads-library-data"),
-    $.getJSON("/ads_expenses"),
-    $.getJSON("/count_per_candidate"),
-    $.getJSON("/tree_map_spend"),
-    $.getJSON("/perfil_expenses"),
-    $.getJSON("/funding_entity")
+    $.getJSON("proyecto-dashboard-politics/ads-library-data"),
+    $.getJSON("proyecto-dashboard-politics/ads_expenses"),
+    $.getJSON("proyecto-dashboard-politics/count_per_candidate"),
+    $.getJSON("proyecto-dashboard-politics/tree_map_spend"),
+    $.getJSON("proyecto-dashboard-politics/perfil_expenses"),
+    $.getJSON("proyecto-dashboard-politics/funding_entity")
   ).then(function (
     [_line_comparative],
     [_ads_expenses],
