@@ -1,4 +1,4 @@
  {
-   "install": "pip install --user pandas",
-   "start": "python main.py"
+   "install": "pip3 install --user pandas",
+   "start": "python3 main.py"
  }

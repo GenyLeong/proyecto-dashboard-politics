@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Arimo&family=Arvo&family=DotGothic16&display=swap");
+#container_plot1 {
+  max-width: 90%;
+  margin: auto;
+}
+
+h1 {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 24px;
+  text-align: center;
+}
+p {
+  margin: 0;
+  font-family: "Arimo", sans-serif;
+}
+.quantity_div {
+  margin-top: 2rem;
+}
+.quantity_div .title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Arvo", serif;
+}
+
+#total_ads,
+#total_money,
+#political_parties {
+  font-size: 16px;
+}
+
+#political_parties p {
+  margin: 0;
+}
+
+input.datepicker {
+  height: 2rem !important;
+}
+.description_date {
+}
+
+.profile_image img {
+  height: 100px;
+  max-width: 100px;
+  object-fit: cover;
+  object-position: 20% 10%;
+  display: block;
+  margin: auto;
+}
+
+.description_info h3 {
+  font-size: 23px;
+  font-weight: 700;
+  text-align: center;
+  font-family: "Arvo", serif;
+  margin: 7px auto auto auto;
+}
+
+.description_info h4 {
+  font-size: 17px;
+  margin: 12px 0px;
+}
+
+.description_info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.expenses {
+  font-size: 15px;
+}
+.expenses span {
+  font-weight: 700;
+}
+
+text.highcharts-title {
+  font-family: "Arvo", serif;
+}
