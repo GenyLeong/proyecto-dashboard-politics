@@ -76,3 +76,21 @@ input.datepicker {
 text.highcharts-title {
   font-family: "Arvo", serif;
 }
+
+.disable {
+  position: relative;
+  padding: 14px 0px;
+  pointer-events: none;
+  cursor: none;
+}
+.opacity {
+  position: absolute;
+  background: #000000db;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.filter_options {
+  padding: 35px 0px 0px 0px;
+}

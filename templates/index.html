@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Political Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="static/main.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/treemap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -17,99 +18,143 @@
 </head>
 
 <body>
-    <div id="container_plot1"></div>
-    <div class="container">
-        <h1>Facebook Ads Library</h1>
+    <!-- <div id="container_plot1"></div> -->
+    <div class="container filter_options">        
         <p class="description_date">Seleccionar rango de fecha: </p>
-        <input type="text" class="datepicker">
-        <div class="row quantity_div">
-            <div class="col s12 m4">
-                <p class="title">Cantidad de anuncios publicitarios encontrados: </p>
-                <div id="total_ads"></div>
-            </div>
-            <div class="col s12 m4">
-                <p class="title">Dinero total invertido: </p>
-                <div id="total_money"></div>
-            </div>
-            <div class="col s12 m4">
-                <p class="title">Total de partidos políticos</p>
-                <div id="political_parties"></div>
-            </div>
-        </div>
         <div class="row">
-            <div class="col s12 m4" id="candidate_0">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row">
-                        <div class="col s12 profile_image">
-                            <img src="/static/images/carlos_mesa.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            <div class="col s12 m6">
+                <input type="text" class="datepicker" id="from">
+            </div>
+            <div class="col s12 m6">
+                <input type="text" class="datepicker" id="to">
+            </div>
+        </div> 
+        <!-- <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <div id="test-slider"></div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col s12 m8">
+                <div class="chips chips-autocomplete"></div>
+            </div>
+            <div class="col s12 m4">
+                <form action="#">
+                    <p>
+                        <label>
+                            <input name="tipo_output" type="radio" checked />
+                            <span>Interacción</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="tipo_output" type="radio" />
+                            <span>Publicidad</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" type="submit" id="showResults" name="action">Mostrar
+                    <i class="material-icons right">Ir</i>
+                </button>
+            </div>
+        </div>      
+    </div>
+    <div class="disable">
+        <div class="opacity"></div>
+        <div class="container">
+            <h1>Facebook Ads Library</h1>
+            <div class="row quantity_div">
+                <div class="col s12 m4">
+                    <p class="title">Cantidad de anuncios publicitarios encontrados: </p>
+                    <div id="total_ads"></div>
+                </div>
+                <div class="col s12 m4">
+                    <p class="title">Dinero total invertido: </p>
+                    <div id="total_money"></div>
+                </div>
+                <div class="col s12 m4">
+                    <p class="title">Total de partidos políticos</p>
+                    <div id="political_parties"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m4" id="candidate_0">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row">
+                            <div class="col s12 profile_image">
+                                <img src="/static/images/carlos_mesa.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s12 description_info">
+                                <h3>Carlos Mesa</h3>
+                                <h4>Candidato de Comunidad Ciudadana</h4>
+                                <p>Esta es la descripción de Carlos Mesa.</p>
+                                <hr>
+                                <div class="expenses">
+                                    <div id="total_ads_perfil"></div>
+                                    <div id="min_money_perfil"></div>
+                                    <div id="max_money_perfil"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col s12 description_info">
-                            <h3>Carlos Mesa</h3>
-                            <h4>Candidato de Comunidad Ciudadana</h4>
-                            <p>Esta es la descripción de Carlos Mesa.</p>
-                            <hr>
-                            <div class="expenses">
-                                <div id="total_ads_perfil"></div>
-                                <div id="min_money_perfil"></div>
-                                <div id="max_money_perfil"></div>
+                    </div>
+                </div>
+                <div class="col s12 m4" id="candidate_3">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row">
+                            <div class="col s12 profile_image">
+                                <img src="/static/images/arce.jpg" alt="" class="circle responsive-img">
+                                <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s12 description_info">
+                                <h3>Luis Arce Catacor</h3>
+                                <h4>Candidato del M.A.S</h4>
+                                <p>Esta es la descripcion de Luis Arce Catacora.</p>
+                                <hr>
+                                <div class="expenses">
+                                    <div id="total_ads_perfil"></div>
+                                    <div id="min_money_perfil"></div>
+                                    <div id="max_money_perfil"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4" id="candidate_4">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row">
+                            <div class="col s12 profile_image">
+                                <img src="/static/images/camacho.jpg" alt="" class="circle responsive-img">
+                                <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s12 description_info">
+                                <h3>Luis Fernando Camacho</h3>
+                                <h4>Candidato de Creemos</h4>
+                                <p>Esta es la descripcion de Luis Fernando Camacho.</p>
+                                <hr>
+                                <div class="expenses">
+                                    <div id="total_ads_perfil"></div>
+                                    <div id="min_money_perfil"></div>
+                                    <div id="max_money_perfil"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4" id="candidate_3">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row">
-                        <div class="col s12 profile_image">
-                            <img src="/static/images/arce.jpg" alt="" class="circle responsive-img">
-                            <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 description_info">
-                            <h3>Luis Arce Catacor</h3>
-                            <h4>Candidato del M.A.S</h4>
-                            <p>Esta es la descripcion de Luis Arce Catacora.</p>
-                            <hr>
-                            <div class="expenses">
-                                <div id="total_ads_perfil"></div>
-                                <div id="min_money_perfil"></div>
-                                <div id="max_money_perfil"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+                <div id="container_over_time"></div>
             </div>
-            <div class="col s12 m4" id="candidate_4">
-                <div class="card-panel grey lighten-5 z-depth-1">
-                    <div class="row">
-                        <div class="col s12 profile_image">
-                            <img src="/static/images/camacho.jpg" alt="" class="circle responsive-img">
-                            <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 description_info">
-                            <h3>Luis Fernando Camacho</h3>
-                            <h4>Candidato de Creemos</h4>
-                            <p>Esta es la descripcion de Luis Fernando Camacho.</p>
-                            <hr>
-                            <div class="expenses">
-                                <div id="total_ads_perfil"></div>
-                                <div id="min_money_perfil"></div>
-                                <div id="max_money_perfil"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+                <div id="tree_map_spend"></div>
             </div>
-        </div>
-        <div class="row">
-            <div id="container_over_time"></div>
-        </div>
-        <div class="row">
-            <div id="tree_map_spend"></div>
-        </div>
-        <div class="row">
-            <div id="tree_map_funding"></div>
-        </div>
-        
+            <div class="row">
+                <div id="tree_map_funding"></div>
+            </div>
+        </div>   
     </div>
 
 </body>

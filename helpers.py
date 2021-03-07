@@ -146,6 +146,8 @@ def get_df_ads_by_party(df: pd.DataFrame) -> pd.DataFrame:
     """
     # colors = df['COLORS']
     df_aux_0 = df.groupby(["page_name"]).agg({"Count": np.sum})
+    print(df_aux_0)
+
     df_aux_0['Colors'] = [
         '#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600'
     ]

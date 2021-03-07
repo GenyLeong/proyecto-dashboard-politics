@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import json
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from helpers import *
 app = Flask(__name__)
 
@@ -32,8 +32,13 @@ def hello_world():
 def api_ads_library():
 
     DATA_FRAME = read_fb_data(file_1=F1, file_2=F2, file_3=F3)
-    t_start = map_id_to_date[0]
-    t_end = map_id_to_date[2]
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    start_arr = [int(x) for x in start_date.split("/")]
+    end_arr = [int(x) for x in end_date.split("/")]
+    t_start = datetime(start_arr[2], start_arr[1], start_arr[0], 0, 0, 0)
+    t_end = datetime(end_arr[2], end_arr[1], end_arr[0], 0, 0, 0)
     df_likes = create_reactions_df(t_start,
                                    t_end,
                                    kind="Likes",
@@ -47,8 +52,13 @@ def update_bolivia_map_camacho():
     """ Callback to rerender Reaction Shares time series """
     global DATA_FRAME_ADS_LIBRARY
 
-    t_start = map_id_to_date[0]
-    t_end = map_id_to_date[1]
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    start_arr = [int(x) for x in start_date.split("/")]
+    end_arr = [int(x) for x in end_date.split("/")]
+    t_start = datetime(start_arr[2], start_arr[1], start_arr[0], 0, 0, 0)
+    t_end = datetime(end_arr[2], end_arr[1], end_arr[0], 0, 0, 0)
 
     # Create timeseries index
     df_raw_timed = create_timestamp_indexes(DATA_FRAME_ADS_LIBRARY,
@@ -89,8 +99,13 @@ def update_ads_graph():
     """ Callback to rerender Reaction Shares time series """
     global DATA_FRAME_ADS_LIBRARY
 
-    t_start = map_id_to_date[0]
-    t_end = map_id_to_date[4]
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    start_arr = [int(x) for x in start_date.split("/")]
+    end_arr = [int(x) for x in end_date.split("/")]
+    t_start = datetime(start_arr[2], start_arr[1], start_arr[0], 0, 0, 0)
+    t_end = datetime(end_arr[2], end_arr[1], end_arr[0], 0, 0, 0)
 
     # Create timeseries index
     df_raw_timed = create_timestamp_indexes(DATA_FRAME_ADS_LIBRARY,
@@ -116,8 +131,13 @@ def update_tree_map_one():
     """ Callback to rerender Reaction Shares time series """
     global DATA_FRAME_ADS_LIBRARY
 
-    t_start = map_id_to_date[0]
-    t_end = map_id_to_date[4]
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    start_arr = [int(x) for x in start_date.split("/")]
+    end_arr = [int(x) for x in end_date.split("/")]
+    t_start = datetime(start_arr[2], start_arr[1], start_arr[0], 0, 0, 0)
+    t_end = datetime(end_arr[2], end_arr[1], end_arr[0], 0, 0, 0)
 
     # Create timeseries index
     df_raw_timed = create_timestamp_indexes(DATA_FRAME_ADS_LIBRARY,
@@ -148,8 +168,13 @@ def update_cc_total_ads():
     """ Callback to rerender Reaction Shares time series """
     global DATA_FRAME_ADS_LIBRARY
 
-    t_start = map_id_to_date[0]
-    t_end = map_id_to_date[4]
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    start_arr = [int(x) for x in start_date.split("/")]
+    end_arr = [int(x) for x in end_date.split("/")]
+    t_start = datetime(start_arr[2], start_arr[1], start_arr[0], 0, 0, 0)
+    t_end = datetime(end_arr[2], end_arr[1], end_arr[0], 0, 0, 0)
 
     # Calculate
     # Create timeseries index
@@ -173,8 +198,13 @@ def update_tree_map_two():
     """ Callback to rerender Reaction Shares time series """
     global DATA_FRAME_ADS_LIBRARY
 
-    t_start = map_id_to_date[0]
-    t_end = map_id_to_date[4]
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    start_arr = [int(x) for x in start_date.split("/")]
+    end_arr = [int(x) for x in end_date.split("/")]
+    t_start = datetime(start_arr[2], start_arr[1], start_arr[0], 0, 0, 0)
+    t_end = datetime(end_arr[2], end_arr[1], end_arr[0], 0, 0, 0)
 
     # Create timeseries index
     df_raw_timed = create_timestamp_indexes(DATA_FRAME_ADS_LIBRARY,
